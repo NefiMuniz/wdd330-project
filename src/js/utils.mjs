@@ -35,7 +35,8 @@ export function createAccountNav() {
   const currentPath = window.location.pathname;
 
   const listItems = links.map(link => {
-    const isActive = currentPath.endsWith(link.href);
+    const normalizedPath = link.href.replace("/index.html", "/")
+    const isActive = currentPath.endsWith(link.href) || currentPath === normalizedPath;
     return `
       <li>
         <a href="${link.href}" class="nav-link${isActive ? " active" : ""}">
