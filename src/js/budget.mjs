@@ -34,6 +34,11 @@ export default class Budget {
     );
   }
 
+  removeTransaction(id) {
+    this.transactions = this.transactions.filter((t) => t.id !== id);
+    this.saveTransactions();
+  }
+
   saveTransactions() {
     localStorage.setItem("transactions", JSON.stringify(this.transactions));
   }

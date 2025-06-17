@@ -44,7 +44,11 @@ async function renderEntries() {
   budget.transactions.forEach((entry) => {
     const li = document.createElement("li");
     li.classList.add("fade-in");
-    li.textContent = `${entry.type === "income" ? "+" : "-"} $${entry.amount.toFixed(2)} - [${entry.category}]: ${entry.description}`;
+    // li.textContent = `${entry.type === "income" ? "+" : "-"} $${entry.amount.toFixed(2)} - [${entry.category}]: ${entry.description}`;
+    li.innerHTML = `
+      ${entry.type === "income" ? "+" : "-"} £${entry.amount.toFixed(2)} - [${entry.category}]: ${entry.description}
+      <button class="delete-btn" data-id="${entry.id}">❌</button>
+    `;
     entriesList.appendChild(li);
 
     total += entry.type === "income" ? entry.amount : -entry.amount;
@@ -60,6 +64,14 @@ async function renderEntries() {
     balanceAUD.textContent = "Conversion error";
     console.error(err);
   }
+
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = e.target.getAttribute("data-id");
+      budget.removeTransaction(id);
+      renderEntries();
+    });
+  });
 }
 
 form.addEventListener("submit", (e) => {
@@ -78,5 +90,7 @@ form.addEventListener("submit", (e) => {
     loadCategories();
   }
 });
+
+
 
 renderEntries();
