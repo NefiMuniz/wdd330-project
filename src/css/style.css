@@ -319,6 +319,80 @@ form button {
   margin: 0.5em 0;
   padding: 0.5em;
   border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+}
+
+#entries li:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.02);
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.4s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.under-construction {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 1rem;
+  text-align: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #333;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.under-construction .worker {
+  font-size: 3rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.under-construction .sign {
+  background: #ffcc00;
+  color: #222;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transform: rotate(-3deg);
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.under-construction .sign.flip {
+  transform: rotate(3deg);
+  animation: flip 2s infinite ease-in-out;
+}
+
+.under-construction .message {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  color: #666;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-10px) rotate(-3deg); }
+}
+
+@keyframes flip {
+  0%, 100% { transform: rotateY(0deg) rotate(3deg); }
+  50% { transform: rotateY(180deg) rotate(3deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .balance-display {

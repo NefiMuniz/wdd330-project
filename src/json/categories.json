@@ -1,0 +1,18 @@
+{
+  "income": [
+    "Salary",
+    "Freelance",
+    "Investments",
+    "Gifts"
+  ],
+  "expense": [
+    "Rent",
+    "Groceries",
+    "Utilities",
+    "Transportation",
+    "Healthcare",
+    "Entertainment",
+    "Dining",
+    "Education"
+  ]
+}
